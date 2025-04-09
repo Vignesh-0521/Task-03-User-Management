@@ -1,0 +1,26 @@
+mat-card {
+  margin: 16px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+table {
+  width: 100%;
+  margin-top: 16px;
+  background-color: #eceaea;
+}
+
+.no-data {
+  padding: 16px;
+  text-align: center;
+  color: #666;
+}
+title {
+  font-weight: bolder;
+}
+
+.mat-cell.buttons {
+  text-align: left;
+}

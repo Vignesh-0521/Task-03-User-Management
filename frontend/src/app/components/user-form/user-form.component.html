@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>{{isEditMode ? 'Edit User' : 'Add New User'}}</h2>   <!-- edituser or adduser is rendered based on the option-->
+
+<mat-dialog-content>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">   <!-- when submit is clicked, it calls the onSubmit method -->
+    <mat-form-field appearance="fill" class="w-100">    <!-- name field-->
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" required>    <!-- errors-->
+      <mat-error *ngIf="userForm.get('name')?.hasError('required')">
+        Name is required
+      </mat-error>
+      <mat-error *ngIf="userForm.get('name')?.hasError('minlength')">
+        Name should be atleast 3 characters
+      </mat-error>
+      <mat-error *ngIf="userForm.get('name')?.hasError('maxlength')">
+        Name should not exceed 20 characters
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-100">    <!-- email field-->
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email" required>    <!-- errors-->
+      <mat-error *ngIf="userForm.get('email')?.hasError('required')">
+        Email is required
+      </mat-error>
+      <mat-error *ngIf="userForm.get('email')?.hasError('email')">
+        Please enter a valid email address
+      </mat-error>
+    </mat-form-field>
+
+    <mat-error *ngIf="errorMessage" class="error-message">
+      {{errorMessage}}
+    </mat-error>
+
+    <mat-dialog-actions align="end">
+      <button mat-button (click)="onCancel()">Cancel</button>   <!-- if clicked, onCancel is called-->
+      <button mat-raised-button color="primary" type="submit"   
+              [disabled]="userForm.invalid">Save</button> <!-- if clicked, onSubmit is called -->
+    </mat-dialog-actions>
+  </form>
+</mat-dialog-content>

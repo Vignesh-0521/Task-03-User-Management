@@ -1,0 +1,19 @@
+@import '@angular/material/theming';    //importing
+
+@include mat-core();    // Include the core styles
+
+$my-primary: mat-palette($mat-indigo);  // defining your custom palette
+$my-accent: mat-palette($mat-pink, A200, A100, A400);
+$my-warn: mat-palette($mat-red);
+
+$my-theme: mat-light-theme((    // creating the theme
+  color: (
+    primary: $my-primary,
+    accent: $my-accent,
+    warn: $my-warn
+  )
+));
+
+@include angular-material-theme($my-theme);   // applying the theme
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
